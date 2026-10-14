@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ bot_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <img class="logo" src="{{ url_for('static', filename='logo.jpg') }}" alt="{{ bot_name }}">
+    <h1>{{ bot_name }}</h1>
+    <p>The bot that makes managing your server easy.</p>
+    <a class="btn" href="{{ invite }}">Add to your server</a>
+  </header>
 
+  <section>
+    <h2>Features</h2>
+    <div class="grid">
+      {% for f in features %}
+      <div class="card"><h3>{{ f.title }}</h3><p>{{ f.desc }}</p></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <h2>Commands</h2>
+    {% for c in commands %}
+      <p><code>{{ c.name }}</code> : {{ c.desc }}</p>
+    {% endfor %}
+  </section>
+
+  <footer>
+    Created by <strong>{{ creator }}</strong>
+  </footer>
+</body>
+</html>
